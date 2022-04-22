@@ -59,8 +59,6 @@ homework
 
 If the depth of an AVL tree is 6 (the depth of an empty tree is defined to be -1), then the minimum possible number of nodes in this tree is: 33  因为一开始不是0 是-1 
 
-
-
 ## 第二节课
 
 ### 红黑树
@@ -78,10 +76,6 @@ If the depth of an AVL tree is 6 (the depth of an empty tree is defined to be -1
 ##### case1 
 
 u的sibling 是红,  那么 u和sibling都染黑, u的父节点染红. 
-
-
-
-
 
 ### B+树
 
@@ -105,8 +99,6 @@ fanout就是children的个数
 如果sibling 有超过ceil(M/2): 借一个
 
 如果sibling 只有ceil(M/2): 合并
-
-
 
 都要向上修改索引
 
@@ -143,10 +135,6 @@ We may need to update some keys stored in some internal nodes even if no leaf is
 Suppose that no leaves are merged during the deletion. How many keys in the internal nodes need to be updated? Select all possible answers.  0 ,1,2 都有可能. 我选了 0 ,1  
 
 比如把root删除, 可能要更新root和更新leaf. 
-
- 
-
-
 
 ## lec3 均摊分析和splay
 
@@ -186,10 +174,6 @@ pop, 代价1, 势能-1, 所以均摊为0
 2. number of available cells in the array 不行, 
 
 答案是 number of elements stored in the array minus number of available cells in the array 可以
-
-
-
-
 
 ### splay tree
 
@@ -231,9 +215,11 @@ BuildHeap和Merge能够以 O(n) 执行。
 
 ### leftist heap
 
-Speed up merging in O(N)
+特点: merge O(logn) ,插入删除均摊时间是Ologn
 
-【Definition】The null path length, Npl(X), of any node X is the length of the shortest path from X to a node without two children.  Define Npl(NULL) = –1.
+【Theorem】A leftist tree with r nodes on the right path must have at least 2r – 1 nodes.
+
+定义 : The null path length, Npl(X), of any node X is the length of the shortest path from X to a node without two children.  Define Npl(NULL) = –1.
 
 Note: 
 Npl(X) = min { Npl(C) + 1 for all C as children of X }
@@ -252,6 +238,8 @@ step 3 可能要左右交换
 
 插入就相当于merge一个节点, 也是O(lgn)
 
+Deletemin要掌握.
+
 不考删除, 删除要修复leftist 性质 .
 
 ```cpp
@@ -259,7 +247,7 @@ PriorityQueue Merge( PriorityQueue H1, PriorityQueue H2 )
 { 
   if (H1==NULL) return H2;
   if (H2==NULL) return H1;
-  if (H1->element > H2->element)
+  if (H1->Element > H2->Element)
     swap(H1, H2);  //swap H1 and H2
     if (h1->left == NULL)
         h1->left = h2;
@@ -353,13 +341,17 @@ actual cost = O1 + #combines = O1 + 1-  trees 变化
 
 left child -next -sibling
 
+### 作业
+
+The right path of a skew heap can be arbitrarily long.  对的
+
+
+
 ## lec5
 
 ### Inverted File Index
 
-用在搜索引擎. 
-
-每个文件检查string , io太慢了!
+用在搜索引擎. 每个文件检查string , io太慢了!
 
 Compact Version - Inverted File Index
 
@@ -411,6 +403,14 @@ while ( read a document D ) {
 不用都返回, 返回部分, 比如谷歌page rank. 
 
 频率小的比较重要, 根据频率小的进行一次搜索, 然后频率放大些进行一次搜索, 如果结果差不多就说明稳定了, 就可以根据这个阈值. 
+
+#### 精确和recall
+
+搜索引擎两个指标
+
+Precision P = RR / (RR + IR)  取到相关/ 所有取到
+
+Recall      R = RR / (RR + RN)   取到相关/所有相关
 
 可能recall 多 但是不精确, 可能精确但是recall少. 
 
@@ -501,7 +501,9 @@ alhpa beta剪枝, 只用搜索  O(sqrt n)个节点即可.
 
 https://www.codeleading.com/article/76203270380/
 
-### lec7
+Given the following game tree, which node is the first one to be pruned with α-β pruning algorithm?
+
+选c, 剪去不用考虑的那个节点. 
 
 #### proj2 
 
@@ -512,8 +514,7 @@ node 变大， edge 变大。
 
 binary heap为啥快？ 操作简单， 常系数小， 数组地址是连续的， 缓存命中率高。 
 
-
-lec  greedy
+### lec7greedy
 
 
 选尽可能多的活动：
@@ -554,6 +555,10 @@ for each a :
 解答 ： 可以用两个优先队列来做， 第一个队列存原始从小到大， 第二个队列存每次产生的t3。 　
 
 找最小的两棵，就是在两个队列前两个里面找，找到后pop两个成为p3. p3 放到第二个队列最后可以保证是递增的， （为什么？） 生成的T3 一定是某两个的和=A+B，如果他比之前生成的的T = C+D小，那么一定有C>A或者D>B, 前面的T3就不可能是当时最小两个的和。因为当时就应该把A或者B选进来。 
+
+#### 作业
+
+Let S be the set of activities in Activity Selection Problem. Then the earliest finish activity am must be included in all the maximum-size subset of mutually compatible activities of S. 这是错的. am只是贪心算法的解一定包含，但是有可能有其他最优解不包含.
 
 ### lec8 分而治之
 
@@ -660,3 +665,12 @@ divide into 3 sub-problems of equal complexity *N*/2 and conquer in *O*(*N*)
 D.
 
 divide into 3 sub-problems of equal complexity *N*/3 and conquer in *O*(*Nl**o**g**N*)
+
+#### 期中考
+
+被证明只具有伪多项式时间算法解的问题有[背包问题](https://zh.wikipedia.org/wiki/背包问题)，[子集合加总问题](https://zh.wikipedia.org/wiki/子集合加總問題)。
+
+一个具有伪多项式时间复杂度的[NP完全问题](https://zh.wikipedia.org/wiki/NP完全)称之为[弱NP完全问题](https://zh.wikipedia.org/w/index.php?title=弱NP完全&action=edit&redlink=1)，而在[P!=NP](https://zh.wikipedia.org/wiki/P/NP问题)的情况下，若一个NP完全问题被证明没有伪多项式时间复杂度的解，则称之为[强NP完全问题](https://zh.wikipedia.org/w/index.php?title=强NP完全&action=edit&redlink=1)。
+
+### 动态规划
+
