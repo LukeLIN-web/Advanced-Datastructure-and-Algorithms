@@ -674,3 +674,22 @@ divide into 3 sub-problems of equal complexity *N*/3 and conquer in *O*(*Nl**o**
 
 ### 动态规划
 
+时间复杂度是伪多项式
+
+
+
+作业：
+
+In dynamic programming, we derive a recurrence relation for the solution to one subproblem in terms of solutions to other subproblems. To turn this relation into a bottomup dynamic programming algorithm, we need an order to fill in the solution cells in a table, such that all needed subproblems are solved before solving a subproblem. For each of the following relations, give such a valid traversal order, or if no traversal order is possible for the given relation, briefly justify why. 
+
+i. A(i, j) = F(A(i, j − 1), A(i − 1, j − 1), A(i − 1, j + 1))
+
+ ii. A(i, j) = F(A(min{i, j} − 1, min{i, j} − 1), A(max{i, j} − 1, max{i, j} − 1)) 
+
+iii. A(i, j) = F(A(i − 2, j − 2), A(i + 2, j + 2))
+
+i. Solve A(i, j) for(i from 0 to n: for(j from 0 to n)) 
+
+ii. Solve A(k, k) for(k from 0 to n) then solve rest in any order 
+
+iii. Impossible: cyclic.
