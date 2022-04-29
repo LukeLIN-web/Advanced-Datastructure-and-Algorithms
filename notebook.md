@@ -735,3 +735,67 @@ weighted interval scheduling
 
 To solve a problem by dynamic programming instead of recursions, the key approach is to store the results of computations for the subproblems so that we only have to compute each different subproblem once. Those solutions can be stored in an array or a hash table.
 
+
+
+#### Let 10 动态规划2 
+
+找到最短距离。
+
+Dijkstra ，时间复杂度为  vlogv +e， 但是要求图没有负数边， 不然就不对了。 
+
+这其实是一个动态规划
+
+
+
+##### Bellman-Ford 算法
+
+也是dp， 也要定义一个子问题。但是很难定义谁先谁后。
+
+首先来看最优解的结构。 
+
+子问题
+
+解决方法就是，一步步增加步数，先计算每个点的 0步， 然后计算每个点的1步， 然后计算每个点的两步，直到每个点都稳定为止。
+
+Lemma： G 没有负边。《=》  c【v】【n-1】 = c【v】【n】 for 所有顶点
+
+此时也就是输出了最优解， 如果这条不成立的话就输出存在负边。
+
+时间复杂度是多少？O（VE ）
+
+空间复杂度： O（V平方）， C【v】【i-1】 可以丢弃， 空间减少到  O（V）。
+
+
+
+##### All pair shorest path
+
+输入：  有向图， 
+
+输出： 每个pair都距离
+
+如果没有负边，就直接 dijkstra。 O（v平方 logv + EV）
+
+有负边：  bellman-ford 需要 O（E V平方）
+
+可以用floyd warshall O（V三次方） 也是用DP
+
+V 定义为1 到n
+
+定一个rank， rank是路径上最大的index 。
+
+子问题怎么定义的？
+
+i 是起点， k表示rank的上限。 
+
+找到各个部分最好的path。
+
+空间复杂度： O n三次方， 优化后可以到On平方。
+
+
+
+如果走了第一个点， 第三步不能走红点， 那么动态规划就不能用了。
+
+
+
+
+
