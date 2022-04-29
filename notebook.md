@@ -1,6 +1,6 @@
-## 第一节课
+第一节课
 
-维护一个完全二叉树, 时间复杂度太大
+维护一个完全二叉树, 时间复杂度太大，所以需要平衡树。 保证最坏情况也是logn。
 
 hl - hr 绝对值小于1 , 那就叫平衡树.   
 
@@ -10,17 +10,17 @@ hl - hr 绝对值小于1 , 那就叫平衡树.
 
 lemma : 一个平衡二叉树有n个节点, must have height lgn.
 
- 左旋转, 右旋转, O1时间保留了BST的性质. 
+ 左旋转, 右旋转 ，可以 在O1时间内保留BST的性质. 
 
 插入怎么恢复平衡?  修复最低的不平衡的点即可
 
-哪些节点的平衡会出问题?     路径上的节点会出问题
+哪些节点的平衡会出问题?    只有到root路径上的节点会出问题
 
 最低的不平衡的点, 左右子树高度差是2 . 
 
 L case u节点左边比右边高2 , R case 反之.  v节点就是高的那个子树的root. 
 
- sibling 兄弟姐妹
+ sibling 是兄弟姐妹的意思。
 
 ##### LL case
 
@@ -29,8 +29,14 @@ v节点左边h+1 高, 右边 h高,u节点不平衡, 就把u改成v的右节点.
 ##### LR case
 
 v节点右边h+1 高, 左边 h高,u节点不平衡. 这里就要v节点右边的w, 做一次左旋, 再做一次右旋. 就是让w左节点为v, 右节点为u.  
-LL case: u的左子树高度>右子树高度，v的左子树高度>=右子树高度
-RR case: u的右子树高度>左子树高度，v的右子树高度>=左子树高度
+
+##### LL case特点
+
+u的左子树高度>右子树高度，v的左子树高度>=右子树高度
+
+##### RR case特点
+
+ u的右子树高度>左子树高度，v的右子树高度>=左子树高度
 
 ##### 删除
 
@@ -219,7 +225,7 @@ BuildHeap和Merge能够以 O(n) 执行。
 
 【Theorem】A leftist tree with r nodes on the right path must have at least 2r – 1 nodes.
 
-定义 : The null path length, Npl(X), of any node X is the length of the shortest path from X to a node without two children.  Define Npl(NULL) = –1.
+定义 : The null path length, Npl(X), X  最短路径from X to a node without two children.  Define Npl(NULL) = –1.
 
 Note: 
 Npl(X) = min { Npl(C) + 1 for all C as children of X }
@@ -556,6 +562,14 @@ for each a :
 
 找最小的两棵，就是在两个队列前两个里面找，找到后pop两个成为p3. p3 放到第二个队列最后可以保证是递增的， （为什么？） 生成的T3 一定是某两个的和=A+B，如果他比之前生成的的T = C+D小，那么一定有C>A或者D>B, 前面的T3就不可能是当时最小两个的和。因为当时就应该把A或者B选进来。 
 
+#### proj4
+
+哈夫曼树WPL最小， 
+
+
+
+
+
 #### 作业
 
 Let S be the set of activities in Activity Selection Problem. Then the earliest finish activity am must be included in all the maximum-size subset of mutually compatible activities of S. 这是错的. am只是贪心算法的解一定包含，但是有可能有其他最优解不包含.
@@ -640,7 +654,7 @@ fn = sqrtn,  总共是 n
 
 https://zhuanlan.zhihu.com/p/100531135
 
-
+考试要背一下1，2，4形式套公式。为了快速写题目， 然后3形式最重要。 
 
 作业题
 
@@ -654,23 +668,70 @@ https://cs.stackexchange.com/questions/96422/how-to-solve-tn-2t%E2%88%9Anlog-n-w
 
 A.  divide into 2 sub-problems of equal complexity *N*/3 and conquer in *O*(*N*) 第一个是on， 第二行是2/3n， 那越来越小， 最后就是on。
 
-B.
+B.divide into 2 sub-problems of equal complexity *N*/3 and conquer in *O*(NlogN) 第一个是logn， 第二个小， 所以最后nlogn
 
-divide into 2 sub-problems of equal complexity *N*/3 and conquer in *O*(NlogN) 第一个是logn， 第二个小， 所以最后nlogn
+C.divide into 3 sub-problems of equal complexity *N*/2 and conquer in *O*(*N*)  
 
-C.
+D.divide into 3 sub-problems of equal complexity *N*/3 and conquer in *O*(*Nl**o**g**N*)
 
-divide into 3 sub-problems of equal complexity *N*/2 and conquer in *O*(*N*)  
 
-D.
 
-divide into 3 sub-problems of equal complexity *N*/3 and conquer in *O*(*Nl**o**g**N*)
 
-#### 期中考
+
+## 期中考
 
 被证明只具有伪多项式时间算法解的问题有[背包问题](https://zh.wikipedia.org/wiki/背包问题)，[子集合加总问题](https://zh.wikipedia.org/wiki/子集合加總問題)。
 
 一个具有伪多项式时间复杂度的[NP完全问题](https://zh.wikipedia.org/wiki/NP完全)称之为[弱NP完全问题](https://zh.wikipedia.org/w/index.php?title=弱NP完全&action=edit&redlink=1)，而在[P!=NP](https://zh.wikipedia.org/wiki/P/NP问题)的情况下，若一个NP完全问题被证明没有伪多项式时间复杂度的解，则称之为[强NP完全问题](https://zh.wikipedia.org/w/index.php?title=强NP完全&action=edit&redlink=1)。
 
-### 动态规划
+不考动态规划， 
+
+#### 判断题
+
+In a red-black tree, the number of internal nodes in the subtree rooted at *x* is no more than 2^bh(x)−1 where *bh*(*x*) is the black-height of *x*. 错的
+
+Word stemming 是啥？ 就是去掉各种后缀获得词根。
+
+For one operation, if its worst-case time bound is Θ(*l**o**g**N*), then its amortized time bound must be *O*(*l**o**g**N*).  这是对的
+
+While accessing a term, hashing is faster than search trees. 对的
+
+### lec9动态规划
+
+例子1 ：
+
+weighted indepdent set on paths:
+
+怎么重构最优解？
+
+```
+if n == 0:
+	return null
+if n ==1 :
+	return {v1}
+else:
+	if c[n] == c[n-1]:
+		S = reconstruct(n-1)
+		return S
+	else:
+		S = reconsturct(n-2)
+		S += {vn}
+		return S
+```
+
+第一步， 定义子问题。
+
+第二步， 找到最优解的值之间的递归关系。
+
+第三步， 计算最优值。
+
+第四步，重构最优解。
+
+
+
+weighted interval scheduling
+
+之前用贪心解决过， 
+
+To solve a problem by dynamic programming instead of recursions, the key approach is to store the results of computations for the subproblems so that we only have to compute each different subproblem once. Those solutions can be stored in an array or a hash table.
 
