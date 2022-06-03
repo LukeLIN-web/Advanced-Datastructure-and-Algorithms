@@ -1,3 +1,366 @@
+#### homwork14
+
+While comparing a serial algorithm with its parallel counterpart, we just concentrate on reducing the work load.
+
+T
+
+F
+
+------
+
+1-2
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+To evaluate the Prefix-Sums of a sequence of 16 numbers by the parallel algorithm with Balanced Binary Trees, C(4,1) is found before C(2,2).
+
+T
+
+F
+
+------
+
+1-3
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+To evaluate the sum of a sequence of 16 numbers by the parallel algorithm with Balanced Binary Trees, B(1,6) is found before B(2,1).
+
+T
+
+F
+
+------
+
+1-4
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+In order to solve the maximum finding problem by a parallel algorithm with *T*(*n*)=*O*(1) , we need work load *W*(*n*)=Ω(*n*2) in return.
+
+T
+
+F
+
+------
+
+1-5
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+To solve the Maximum Finding problem with parallel Random Sampling method, *O*(*n*) processors are required to get *T*(*n*)=*O*(1) and *W*(*n*)=*O*(*n*) with very high probability.
+
+Suppose that we have *k* computing tasks, each with wrokload *w**i* and running time (a.k.a depth) *d**i*. What are the workload *W* and the running time *D* of the following algorithm?
+
+```
+for i = 1 to k
+    solve task i
+```
+
+A.
+
+*W*=∑*i*=1*k**w**i* and *D*=∑*i*=1*k**d**i*
+
+B.
+
+*W*=max*i*{*w**i*} and *D*=∑*i*=1*k**d**i*
+
+C.
+
+*W*=∑*i*=1*k**w**i* and *D*=max*i*{*d**i*}
+
+D.
+
+*W*=max*i*{*w**i*} and *D*=max*i*{*d**i*}
+
+------
+
+2-2
+
+分数 2
+
+作者 Yuchen Mao
+
+单位 浙江大学
+
+Suppose that we have *k* computing tasks, each with wrokload *w**i* and running time (a.k.a depth) *d**i*. What are the workload *W* and the running time *D* of the following algorithm?
+
+```
+for i, i = 1 to k pardo
+    solve task i
+```
+
+A.
+
+*W*=∑*i*=1*k**w**i* and *D*=∑*i*=1*k**d**i*
+
+B.
+
+*W*=max*i*{*w**i*} and *D*=∑*i*=1*k**d**i*
+
+C.
+
+*W*=∑*i*=1*k**w**i* and *D*=max*i*{*d**i*}
+
+D.
+
+*W*=max*i*{*w**i*} and *D*=max*i*{*d**i*}
+
+------
+
+2-1
+
+分数 3
+
+作者 沈鑫
+
+单位 浙江大学
+
+The prefix-min problem is to find for each *i*, 1≤*i*≤*n*, the smallest element among *A*(1), *A*(2), ⋯, *A*(*i*). What is the run time and work load for the following algorithm?
+
+```
+for i, 1≤i≤n pardo
+  B(0, i) = A(i)
+for h=1 to log(n)
+  for i, 1≤i≤n/2^h pardo
+    B(h, i) = min {B(h-1, 2i-1), B(h-1, 2i)}
+for h=log(n) to 0
+  for i even, 1≤i≤n/2^h pardo
+    C(h, i) = C(h+1, i/2)
+  for i=1 pardo
+    C(h, 1) = B(h, 1)
+  for i odd, 3≤i≤n/2^h pardo
+    C(h, i) = min {C(h + 1, (i - 1)/2), B(h, i)}
+for i, 1≤i≤n pardo
+  Output C(0, i)
+```
+
+A.
+
+*O*(*n*), *O*(*n*)
+
+B.
+
+*O*(*l**o**g**n*), *O*(*l**o**g**n*)
+
+C.
+
+*O*(*l**o**g**n*), *O*(*n*)
+
+D.
+
+*O*(*n*), *O*(*l**o**f**n*)
+
+------
+
+2-2
+
+分数 2
+
+作者 沈鑫
+
+单位 浙江大学
+
+Which one of the following statements about the Maximum Finding problem is true?
+
+A.
+
+There exists a serial algorithm with time complexity being *O*(*l**o**g**N*).
+
+B.
+
+No parallel algorithm can solve the problem in *O*(1) time.
+
+C.
+
+When partitioning the problem into sub-problems and solving them in parallel, compared with *N*, choosing *l**o**g**l**o**g**N* as the size of each sub-problem can reduce the work load and the worst-case time complexity.
+
+D.
+
+Parallel random sampling algorithm can run in *O*(1) time and *O*(*N*) work with very high probability.
+
+------
+
+2-3
+
+分数 3
+
+作者 徐镜春
+
+单位 浙江大学
+
+Sorting-by-merging is a classic serial algorithm. It can be translated directly into a reasonably efficient parallel algorithm. A recursive description follows.
+
+MERGE−SORT( A(1), A(2), ..., A(n); B(1), B(2), ..., B(n) )
+
+Assume that *n*=2*l* for some integer *l*≥0
+
+if n = 1 then return B(1) := A(1)
+
+else call, in parallel, MERGE−SORT( A(1), ..., A(n/2); C(1), ..., C(n/2) ) and
+
+- MERGE−SORT(A(n/2+1), ..., A(n); C(n/2+1), ..., C(n) )
+- Merge (C(1),...C(n/2)) and (C(n/2 + 1),...,C(n)) into (B(1), B(2), ..., B(n)) with time O(n)
+
+Then the MERGE−SORT runs in __ .
+
+A.
+
+*O*(*n*log*n*) work and *O*(log2*n*) time
+
+B.
+
+*O*(*n*log*n*) work and *O*(log*n*) time
+
+C.
+
+*O*(*n*log2*n*) work and *O*(log2*n*) time
+
+D.
+
+*O*(*n*log2*n*) work and *O*(log*n*) time
+
+------
+
+2-4
+
+分数 2
+
+作者 陈越
+
+单位 浙江大学
+
+Which one of the following statements about the Ranking problem is true? (Assume that both arrays contain *N* elements.)
+
+A.
+
+There exists a serial algorithm with time complexity being *O*(*l**o**g**N*).
+
+B.
+
+Parallel binary search algorithm can solve the problem in *O*(1) time.
+
+C.
+
+When partitioning the problem into sub-problems and solving them in parallel, choosing *l**o**g**l**o**g**N* as the size of each sub-problem can reduce the work load and the worst-case time complexity to *O*(*l**o**g**N*).
+
+D.
+
+There is a parallel algorithm that can run in *O*(*l**o**g**N*) time and *O*(*N*) work.
+
+
+
+
+
+### homework13
+
+
+
+Let *a*=(*a*1,*a*2,…,*a**i*,…,*a**j*,…,*a**n*) denote the list of elements we want to sort. In the quicksort algorithm, if the pivot is selected uniformly at random. Then any two elements get compared at most once and the probability of *a**i* and *a**j* being compared is 2/(*j*−*i*+1) for *j*>*i*, given that *a**i* or *a**j* is selected as the pivot.
+
+T
+
+F
+
+------
+
+1-2
+
+分数 2
+
+作者 沈鑫
+
+单位 浙江大学
+
+Reviewing the randomized QuickSort in our course, we always select a central splitter as a pivot before recursions, make sure that each side contains at least *n*/4 elements. Hence, differing from the deterministic QuickSort, the **worst case expected running time** of the randomized QuickSort is Θ(*Nl**o**g**N*)
+
+Given a linked list containg *N* nodes. Our task is to remove all the nodes. At each step, we randomly choose one node in the current list, then delete the selected node together with all the nodes after it. Here we assume that each time we choose one node uniformly among all the remaining nodes. What is the expected number of steps to remove all the nodes?
+
+A.
+
+Θ(*l**o**g**N*)
+
+B.
+
+*N*/*e*
+
+C.
+
+*N*/2
+
+D.
+
+*N*
+
+------
+
+2-2
+
+分数 3
+
+作者 徐镜春
+
+单位 浙江大学
+
+The Online Hiring Algorithm ( hire only once ) is described as the following:
+
+```
+int OnlineHiring ( EventType C[ ], int N, int k )
+{
+    int Best = N;
+    int BestQ = -INFINITY ;
+    for ( i=1; i<=k; i++ ) {
+        Qi = interview( i );
+        if ( Qi > BestQ )   BestQ = Qi;
+    }
+    for ( i=k+1; i<=N; i++ ) {
+        Qi = interview( i );
+        if ( Qi > BestQ ) {
+            Best = i;
+            break;
+        }
+    }
+    return Best;
+}
+```
+
+Assume that the quality input C[ ] is uniformly random.
+When *N* = 271 and *k* = 90, the probability of hiring the *N*th candidate is__.
+
+A.
+
+1/*e*
+
+B.
+
+1/*N*
+
+C.
+
+1/3
+
+D.
+
+1/*k*
+
+
+
 
 
 #### homwork11
