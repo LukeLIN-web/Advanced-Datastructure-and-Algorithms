@@ -301,3 +301,211 @@ Upon the termination of the algorithm, the algorithm returns a cut (*A*,*B*) so 
 D.
 
 The algorithm terminates after at most *O*(∣*V*∣2) flips.
+
+
+
+HW15
+
+1-1
+
+分数 2
+
+作者 何钦铭
+
+单位 浙江大学
+
+To merge 55 runs using 3 tapes for a 2-way merge, the original distribution (34, 21) is better than (27, 28).
+
+T
+
+F
+
+------
+
+1-2
+
+分数 2
+
+作者 陈越
+
+单位 浙江大学
+
+If only one tape drive is available to perform the external sorting, then the tape access time for any algorithm will be Ω(*N*2).
+
+T
+
+F
+
+------
+
+1-4
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+In external sorting, a *k*-way merging is usually used in order to reduce the number of passes and we will take the *k* as large as possible as long as we have enough amount of tapes.
+
+T
+
+F
+
+------
+
+1-5
+
+分数 2
+
+作者 何钦铭
+
+单位 浙江大学
+
+In general, for a 3-way merge we need 6 input buffers and 2 output buffers for parallel operations.
+
+T
+
+F
+
+Given 100,000,000 records of 256 bytes each, and the size of the internal memory is 128MB. If simple 2-way merges are used, how many passes do we have to do?
+
+A.
+
+10
+
+B.
+
+9
+
+C.
+
+8
+
+D.
+
+7
+
+------
+
+2-2
+
+分数 2
+
+作者 陈越
+
+单位 浙江大学
+
+In external sorting, suppose we have 5 runs of lengths 2, 8, 9, 5, and 3, respectively. Which of the following merging orders can obtain the minimum merge time?
+
+A.
+
+merge runs of lengths 2 and 3 to obtain Run#1; merge Run#1 with the one of length 5 to obtain Run#2; merge Run#2 with the one of length 8 to obtain Run#3; merge Run#3 with the one of length 9
+
+B.
+
+merge runs of lengths 2 and 3 to obtain Run#1; merge Run#1 with the one of length 5 to obtain Run#2; merge runs of lengths 8 and 9 to obtain Run#3; merge Run#2 and Run#3
+
+C.
+
+merge runs of lengths 2 and 3 to obtain Run#1; merge runs of lengths 5 and 8 to obtain Run#2; merge Run#1 and Run#2 to obtain Run#3; merge Run#3 with the one of length 9
+
+D.
+
+merge runs of lengths 2 and 3 to obtain Run#1; merge runs of lengths 5 and 8 to obtain Run#2; merge Run#2 with the one of length 9 to obtain Run#3; merge Run#1 and Run#3
+
+------
+
+2-3
+
+分数 2
+
+作者 徐镜春
+
+单位 浙江大学
+
+In external sorting, in order to reduce the number of passes, minimizing the initial number of runs (i.e. generating longer runs ) is a good idea. Suppose the input record keys are (25, 74, 56, 34, 21, 11, 29, 80, 38, 53) and the internal memery can hold only 3 records, the minimum number of initial runs obtained by replacement selection is__ 。
+
+A.
+
+1
+
+B.
+
+2
+
+C.
+
+3
+
+D.
+
+4
+
+------
+
+2-4
+
+分数 3
+
+作者 陈越
+
+单位 浙江大学
+
+Suppose we have the internal memory that can handle 12 numbers at a time, and the following two runs on the tapes:
+
+**Run 1**: 1, 3, 5, 7, 8, 9, 10, 12
+
+**Run 2**: 2, 4, 6, 15, 20, 25, 30, 32
+
+Use 2-way merge with 4 input buffers and 2 output buffers for parallel operations. Which of the following three operations are NOT done in parallel?
+
+A.
+
+1 and 2 are written onto the third tape; 3 and 4 are merged into an output buffer; 6 and 15 are read into an input buffer
+
+B.
+
+3 and 4 are written onto the third tape; 5 and 6 are merged into an output buffer; 8 and 9 are read into an input buffer
+
+C.
+
+5 and 6 are written onto the third tape; 7 and 8 are merged into an output buffer; 20 and 25 are read into an input buffer
+
+D.
+
+7 and 8 are written onto the third tape; 9 and 15 are merged into an output buffer; 10 and 12 are read into an input buffer
+
+------
+
+2-5
+
+分数 3
+
+作者 何钦铭
+
+单位 浙江大学
+
+Suppose that the replacement selection is applied to generate longer runs with a priority queue of size 4. Given the sequence of numbers { 9, 75, 17, 12, 88, 91, 25, 22, 35, 41, 58, 96, 15 }. Which of the following gives the second output run?
+
+A.
+
+22 35 88 91
+
+B.
+
+22 35 41 58 88 91 96
+
+C.
+
+22 35 41 58 96
+
+D.
+
+22 35 41 58
+
+
+
+编程题
+
+https://blog.csdn.net/h937858299/article/details/122751675
