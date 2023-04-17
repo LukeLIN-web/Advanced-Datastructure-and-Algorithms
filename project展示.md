@@ -46,13 +46,11 @@ Your tasks are:
 
 http://www.diag.uniroma1.it//challenge9/data/tiger/DC.tmp.gz 下载 了DC的数据集, 用 python处理一下. 留下source, target .
 
-
-
- 太恶心了. binomial queue, pop需要merge 树. decrease key 需要find.  这个没有parent. 裂开了, 又白改了. 整个链表都耦合在一起, 必须全都自己写.   别人的如果是错的都不知道哪里错了. 
+ binomial queue, pop需要merge 树. decrease key 需要find.  这个没有parent. 裂开了, 又白改了. 整个链表都耦合在一起
 
 我有一个坏毛病就是, 失败了不提交, 其实很重要的是写下来失败的时候哪里错了, 把代码也记录下来, 没准之后的结果更差.
 
-devljy的问题:  6 4 0 的时候,  插入7 ,head是4 而不是0 .
+问题:  6 4 0 的时候,  插入7 ,head是4 而不是0 .
 
 原因: 
 
